@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gmail Inbox Tester</title>
+  <style>
+    body { font-family: Arial; text-align:center; }
+    table { margin:auto; border-collapse: collapse; width: 80%; }
+    th, td { border:1px solid #ccc; padding:8px; text-align:center; }
+    th { background:#4CAF50; color:white; }
+  </style>
+</head>
+<body>
+  <h1>📩 Gmail Inbox Tester</h1>
+  <table>
+    <thead>
+      <tr><th>From</th><th>Subject</th><th>Folder</th></tr>
+    </thead>
+    <tbody id="emails"><tr><td colspan="3">Loading...</td></tr></tbody>
+  </table>
+
+  <script>
+    async function loadEmails() {
+      const res = await fetch("/api/emails");
+      const data = await res.json();
+      const tbody = document.getElementById("emails");
+      tbody.innerHTML = "";
+      data.forEach(email => {
+        tbody.innerHTML += `<tr>
+          <td>${email.from}</td>
+          <td>${email.subject}</td>
+          <td>${email.folder}</td>
+        </tr>`;
+      });
+    }
+    loadEmails();
+    setInterval(loadEmails, 10000); // refresh every 10 sec
+  </script>
+</body>
+</html>

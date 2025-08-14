@@ -1,0 +1,19 @@
+{
+  "name": "gmail-inbox-tester",
+  "version": "1.0.0",
+  "description": "Web app to test Gmail Inbox, Spam, and Promotions using Gmail API",
+  "main": "api/emails.js",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "googleapis": "^105.0.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
